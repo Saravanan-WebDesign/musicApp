@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Music</title>
+</head>
+<body>
+
+    <!-- <script src="index.js"></script> -->
+    
+    <header class="main-container">
+       <main class="music-player">
+        <nav>
+            <div class="icon">
+        <i class="fa-solid fa-angle-left"></i>
+    </div>
+    <div class="icon">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    </nav>
+
+    <img src="images/WhatsApp Image 2024-06-19 at 16.28.44_a833dd0c.jpg" alt="" class="songimg">
+
+    <h1>Unstoppable Song</h1>
+    <p>SaiVEVO</p>
+
+    <audio controls id="song" class="myaudioS">
+        <source src="images/Unstoppable English Song Download Mp3-BarmanMusic.Com.mp3" type="audio/mpeg">
+    </audio>
+    <input type="range" value="0" title="range" id="prograss">
+    <div class="controls">
+        <div>
+            <i class="fa-solid fa-backward"></i>
+        </div>
+        <div onclick="playPause()">
+            <i class="fa-solid fa-play" id="controlIcon"></i>
+        </div>
+        <div>
+            <i class="fa-solid fa-forward"></i>
+        </div>
+    </div>
+       </main>
+    </header>
+
+    <script>
+        var buttonsss = document.getElementById("controlIcon")
+
+var prograss = document.getElementById("prograss")
+var mySong = document.getElementById("song")
+
+mySong.onloadedmetadata = function(){
+    prograss.max = mySong.duration
+    prograss.value = mySong.currentTime
+}
+
+function playPause(){
+   
+ 
+    if(buttonsss.classList.contains("fa-pause")){
+       
+        mySong.pause()
+        buttonsss.classList.remove("fa-pause")
+        buttonsss.classList.add("fa-play")
+    }
+    else{
+        mySong.play()
+     
+        buttonsss.classList.add("fa-pause")
+        buttonsss.classList.remove("fa-play")
+
+        }
+
+    }
+
+    if(mySong.play()){
+        setInterval(() => {
+            prograss.value = mySong.currentTime
+        }, 4000);
+    }
+
+    prograss.onchange = function(){
+        mySong.play()
+        mySong.currentTime = prograss.value
+        buttonsss.classList.add("fa-pause")
+        buttonsss.classList.remove("fa-play")
+    }
+
+    </script>
+    
+</body>
+</html>
